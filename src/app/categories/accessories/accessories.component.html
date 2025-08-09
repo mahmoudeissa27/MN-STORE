@@ -1,0 +1,23 @@
+<!-- clothing.component.html -->
+<div *ngIf="successMessage" class="success-message">
+  {{ successMessage }}
+</div>
+
+<div *ngIf="products && products.length > 0; else noProducts">
+  <div class="products-grid">
+    <div *ngFor="let product of products" class="product-card">
+      <img [src]="product.thumbnail" alt="{{ product.title }}" class="product-image" />
+      <h3 class="product-title">{{ product.title }}</h3>
+      <p class="product-description">{{ product.description }}</p>
+      <p class="product-price">${{ product.price }}</p>
+      <div class="product-actions">
+        <button class="btn cart-btn" (click)="addToCart(product)">🛒 Add to Cart</button>
+        <button class="btn favorite-btn" (click)="addToFavorites(product)">❤️</button>
+      </div>      
+    </div>
+  </div>
+</div>
+
+<ng-template #noProducts>
+  <p class="no-products">No products available.</p>
+</ng-template>

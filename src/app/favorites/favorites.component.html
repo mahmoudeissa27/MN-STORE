@@ -1,0 +1,29 @@
+
+<div *ngIf="successMessage" class="success-message">
+  {{ successMessage }}
+</div>
+
+<div *ngIf="favoriteItems.length > 0; else emptyFavorites">
+  <h2 class="favorites-title">Your Favorites ❤️</h2>
+
+  <div class="favorites-grid">
+    <div *ngFor="let item of favoriteItems" class="favorite-card">
+      <img [src]="item.thumbnail" alt="{{ item.title }}" class="favorite-img" />
+      <h4 class="favorite-title">{{ item.title }}</h4>
+      <p class="favorite-price">💰 {{ item.price }}$</p>
+
+      <div class="favorite-actions">
+        <button class="btn btn-sm btn-danger" (click)="removeFromFavorites(item.id)">❌ Remove</button>
+        <button class="btn btn-sm btn-success" (click)="addToCart(item)">🛒 Add to Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="clear-btn-container">
+    <button class="btn btn-warning mt-3" (click)="clearFavorites()">🧹 Clear All</button>
+  </div>
+</div>
+
+<ng-template #emptyFavorites>
+  <p class="text-muted">No favorite items yet.</p>
+</ng-template>

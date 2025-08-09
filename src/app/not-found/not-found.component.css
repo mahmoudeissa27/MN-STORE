@@ -1,0 +1,27 @@
+.not-found-container {
+    height: 100vh;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 20px;
+  }
+  
+  .not-found-image {
+    max-width: 400px;
+    width: 100%;
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+  }
+  

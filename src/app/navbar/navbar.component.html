@@ -1,0 +1,122 @@
+<nav class="navbar navbar-expand-lg shadow-sm border-bottom" style="background-color: #ffffff;">
+  <div class="container-fluid">
+    <a class="navbar-brand text-primary fw-bold" routerLink="/" routerLinkActive="active">MN store</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <div class="w-100 d-flex align-items-center justify-content-between flex-wrap">
+
+        <!-- 🟢 Left section (Categories + Dropdowns) -->
+        <ul class="navbar-nav d-flex flex-row gap-2">
+          <!-- Clothing -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" role="button" data-bs-toggle="dropdown">Clothing</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="['/clothing', 'mens-shirts']">Men's Shirts</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/clothing', 'mens-shoes']">Men's Shoes</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/clothing', 'womens-dresses']">Women's Dresses</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/clothing', 'womens-shoes']">Women's Shoes</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/clothing', 'womens-bags']">Women's Bags</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/clothing', 'womens-jewellery']">Women's Jewellery</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/clothing', 'tops']">Tops</a></li>
+            </ul>
+          </li>
+
+          <!-- Beauty -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" role="button" data-bs-toggle="dropdown">Beauty</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="['/beauty', 'beauty']">Beauty</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/beauty', 'skin-care']">Skin Care</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/beauty', 'fragrances']">Fragrances</a></li>
+            </ul>
+          </li>
+
+          <!-- Electronics -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" role="button" data-bs-toggle="dropdown">Electronics</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="['/electronics', 'smartphones']">Smartphones</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/electronics', 'laptops']">Laptops</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/electronics', 'tablets']">Tablets</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/electronics', 'mobile-accessories']">Mobile Accessories</a></li>
+            </ul>
+          </li>
+
+          <!-- Accessories -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" role="button" data-bs-toggle="dropdown">Accessories</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="['/accessories', 'sunglasses']">Sunglasses</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/accessories', 'sports-accessories']">Sports Accessories</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/accessories', 'mens-watches']">Men's Watches</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/accessories', 'womens-watches']">Women's Watches</a></li>
+            </ul>
+          </li>
+
+          <!-- Furniture -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" role="button" data-bs-toggle="dropdown">Furniture</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="['/furniture', 'furniture']">Furniture</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/furniture', 'home-decoration']">Home Decoration</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/furniture', 'kitchen-accessories']">Kitchen Accessories</a></li>
+            </ul>
+          </li>
+
+          <!-- Others -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-dark" role="button" data-bs-toggle="dropdown">Others</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" [routerLink]="['/others', 'groceries']">Groceries</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/others', 'motorcycle']">Motorcycle</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/others', 'vehicle']">Vehicle</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- 🟠 Right section -->
+        <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
+          <li class="nav-item">
+            <a class="nav-link text-dark" routerLink="/home" routerLinkActive="active">
+              <i class="bi bi-house-door me-1"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" routerLink="/Favorites" routerLinkActive="active">
+              <i class="bi bi-heart-fill me-1"></i> Favorites
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" routerLink="/cart" routerLinkActive="active">
+              <i class="bi bi-cart3 me-1"></i> Cart
+            </a>
+          </li>
+
+          <!-- icon-->
+          <li class="nav-item" *ngIf="isLoggedIn; else loginLink">
+            <div class="d-flex align-items-center">
+              <i class="bi bi-person-circle fs-5 me-2"></i>
+              <span class="me-2">{{ currentUser?.username }}</span>
+              <button class="btn btn-outline-danger btn-sm" (click)="logout()">Logout</button>
+            </div>
+          </li>
+          
+          <ng-template #loginLink>
+            <li class="nav-item">
+              <a class="nav-link text-dark" routerLink="/login" routerLinkActive="active">
+                <i class="bi bi-box-arrow-in-right me-1"></i> Login
+              </a>
+            </li>
+          </ng-template>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</nav>
